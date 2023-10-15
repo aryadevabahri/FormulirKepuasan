@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/08a211b14c.js" crossorigin="anonymous"></script>
+    <style>
+        .table{
+            border: 1px 1px black;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            listdata();
+        })
+
+        function listdata() {
+            $.ajax({
+                type: "GET",
+                url: "/♎︎♋︎⧫︎♋︎",
+                data: {},
+                success: function data(response) {
+                    
+                    let rows = response['data']
+                    for (let i = 0; i < rows.length; i++) {
+                        let row = rows[i];
+                        let nama = row['nama'];
+                        let jeniskelamin = row['jeniskelamin'];
+                        let usia = row['usia'];
+                        let pendidikan = row['pendidikan'];
+                        let jenislayanan = row['jenislayanan'];
+                        let pekerjaan = row['pekerjaan'];
+                        let jawaban1 = row['jawaban1'];
+                        let jawaban2 = row['jawaban2'];
+                        let jawaban3 = row['jawaban3'];
+                        let jawaban4 = row['jawaban4'];
+                        let jawaban5 = row['jawaban5'];
+                        let jawaban6 = row['jawaban6'];
+                        let jawaban7 = row['jawaban7'];
+                        let jawaban8 = row['jawaban8'];
+                        let jawaban9 = row['jawaban9'];
+                        let id = row['id']
+                        let date = row['date'];
+                        let temp_html = `
+                        <tr>
+                            <td>${jeniskelamin}</td>
+                            <td>${usia}</td>
+                            <td>${pendidikan}</td>
+                            <td>${jenislayanan}</td>
+                            <td>${pekerjaan}</td>
+                            <td>${jawaban1}</td>
+                            <td>${jawaban2}</td>
+                            <td>${jawaban3}</td>
+                            <td>${jawaban4}</td>
+                            <td>${jawaban5}</td>
+                            <td>${jawaban6}</td>
+                            <td>${jawaban7}</td>
+                            <td>${jawaban8}</td>
+                            <td>${jawaban9}</td>
+                        </tr>`
+                        $('#data-place').empty();
+                        $('#data-place').append(temp_html);
+
+                    }
+
+                }
+            })
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="listdata">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">nama</th>
+                    <th scope="col">jeniskelamin</th>
+                    <th scope="col">usia</th>
+                    <th scope="col">pendidikan</th>
+                    <th scope="col">Jenis Layanan</th>
+                    <th scope="col">Pekerjaan</th>
+                    <th scope="col">U1</th>
+                    <th scope="col">U2</th>
+                    <th scope="col">U3</th>
+                    <th scope="col">U4</th>
+                    <th scope="col">U5</th>
+                    <th scope="col">U6</th>
+                    <th scope="col">U7</th>
+                    <th scope="col">U8</th>
+                    <th scope="col">U9</th>
+                </tr>
+            </thead>
+            <tbody id="data-place">
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

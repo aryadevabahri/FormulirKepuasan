@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/08a211b14c.js" crossorigin="anonymous"></script>
+    <style>
+        html {
+            position: relative;
+            height: 100%;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        body {
+            position: relative;
+            /* width: 100%; */
+            height: 100%;
+        }
+
+        .judul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .judul2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .judul>h1 {
+            margin: 0;
+        }
+
+        .usia {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+        }
+
+        #form-pendapat {
+            margin-left: 5%;
+        }
+
+        .inage {
+            border: 0;
+            position: relative;
+            width: 19%;
+        }
+
+        .profile-table {
+            position: relative;
+            width: 100%;
+        }
+
+        .in-usia {
+            width: 40%;
+        }
+
+        #nama {
+            border: 0;
+        }
+
+        #pekerjaanlain {
+            border: 0;
+        }
+
+        #jenislayanan {
+            border: 0;
+        }
+        .form-pendapat{
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+        }
+
+        @media screen and (max-width:700px) {
+            * {
+                font-size: x-small;
+            }
+
+            .judul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 120%;
+            }
+
+            .in-usia {
+                width: 100%;
+            }
+
+            .usia {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+            }
+
+            #form-pendapat {
+                margin-left: 0;
+            }
+
+            .kecilindikit {
+                font-size: 90%;
+            }
+
+            input[type=radio] {
+                height: 10px;
+            }
+
+            .column-pekerjaan {
+                display: flex;
+                flex-direction: column;
+                align-items: top;
+            }
+
+            #pekerjaanlain {
+                width: 40%;
+            }
+
+            #jenislayanan {
+                width: 20%;
+            }
+
+            h2,
+            h3 {
+                font-size: 100%;
+            }
+        }
+    </style>
+    <script>
+        function scrolltoname() {
+            let element = document.getElementById("nama");
+            element.scrollIntoView();
+        }
+        
+        function submit() {
+            let nama = $("input[type='text'][name='nama']").val();
+            var jeniskelamin = $("input[type='radio'][name='jeniskelamin']:checked").val();
+            let usia = $("input[type='number'][name='usia']").val();
+            let pendidikan = $("input[type='radio'][name='pendidikan']:checked").val();
+            let pekerjaan = $("input[type='radio'][name='pekerjaan']:checked").val();
+            let jenis_layanan = $("input[type='text'][name='jenislayanan']").val();
+            let jawaban_1 = $("input[type='radio'][name='nilai-persyaratan']:checked").val();
+            let jawaban_2 = $("input[type='radio'][name='nilai-kemudahan']:checked").val();
+            let jawaban_3 = $("input[type='radio'][name='nilai-kecepatan']:checked").val();
+            let jawaban_4 = $("input[type='radio'][name='nilai-biaya']:checked").val();
+            let jawaban_5 = $("input[type='radio'][name='nilai-produk']:checked").val();
+            let jawaban_6 = $("input[type='radio'][name='nilai-kompetensi']:checked").val();
+            let jawaban_7 = $("input[type='radio'][name='nilai-keramahan']:checked").val();
+            let jawaban_8 = $("input[type='radio'][name='nilai-kualitassarana']:checked").val();
+            let jawaban_9 = $("input[type='radio'][name='nilai-kualitassarana']:checked").val();
+            // console.log(nama,jeniskelamin,usia,pendidikan,pekerjaan,jenis_layanan,jawaban_1,jawaban_2,jawaban_3,jawaban_4,jawaban_5,jawaban_6,jawaban_7,jawaban_8,jawaban_9);
+            if (!nama) {
+                alert('mahon isi input nama')
+                scrolltoname()
+            } else if (!jeniskelamin) {
+                alert('mahon pilih salah satu dari jenis kelamin')
+                scrolltoname()
+            } else if (!usia) {
+                alert('mahon isi input usia')
+                scrolltoname()
+            } else if (!pendidikan) {
+                alert('mahon pilih salah satu dari opsi pendidikan')
+                scrolltoname()
+            } else if (!jenis_layanan) {
+                alert('mohon di isi input jenis layanannya')
+                scrolltoname()
+            } else if (!pekerjaan) {
+                alert('mohon pilih salah satu dari opsi pekerjaan')
+                scrolltoname()
+            }else if (!jawaban_1) {
+                alert('mahon pilih salah satu dari opsi jawaban pertanyaan 1')
+                scrolltoname()
+            } else if (!jawaban_2) {
+                alert('mahon pilih salah satu dari opsi jawaban pertanyaan 2')
+                scrolltoname()
+            } else if (!jawaban_3) {
+                alert('mahon pilih salah satu dari opsi jawaban pertanyaan 3')
+                scrolltoname()
+            } else if (!jawaban_4) {
+                alert('mahon pilih salah satu dari opsi jawaban pertanyaan 4')
+                scrolltoname()
+            } else if (!jawaban_5) {
+                alert('mahon pilih salah satu dari opsi jawaban pertanyaan 5')
+                scrolltoname()
+            } else if (!jawaban_6) {
+                alert('mahon pilih salah satu dari opsi jawaban pertanyaan 6')
+                scrolltoname()
+            } else if (!jawaban_7) {
+                alert('mahon pilih salah satu dari opsi jawaban pertanyaan 7')
+                scrolltoname()
+            } else if (!jawaban_8) {
+                alert('mahon pilih salah satu dari opsi jawaban pertanyaan 8')
+                scrolltoname()
+            } else if (!jawaban_9) {
+                alert('mahon pilih salah satu dari opsi jawaban pertanyaan 9')
+                scrolltoname()
+            } else if (pekerjaan === 'Lainnya') {
+                pekerjaan = $("input[type='text'][name='pekerjaanlain']").val();
+                let form_data = new FormData();
+                form_data.append('nama_give', nama);
+                form_data.append('jeniskelamin_give', jeniskelamin);
+                form_data.append('usia_give', usia);
+                form_data.append('pendidikan_give', pendidikan);
+                form_data.append('jenislayanan_give', jenis_layanan);
+                form_data.append('jawaban1_give', jawaban_1);
+                form_data.append('jawaban2_give', jawaban_2);
+                form_data.append('jawaban3_give', jawaban_3);
+                form_data.append('jawaban4_give', jawaban_4);
+                form_data.append('jawaban5_give', jawaban_5);
+                form_data.append('jawaban6_give', jawaban_6);
+                form_data.append('jawaban7_give', jawaban_7);
+                form_data.append('jawaban8_give', jawaban_8);
+                form_data.append('jawaban9_give', jawaban_9);
+                form_data.append('pekerjaan_give', pekerjaan);
+                $.ajax({
+                    type: 'POST',
+                    url: '/⬧︎♋︎❖︎♏︎♎︎♋︎⧫︎♋︎',
+                    data: form_data,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        let msg = response['msg']
+                        if (msg === 'success') {
+                            setTimeout(function () {
+                                window.location = response['url'];
+                            }, 4000);
+                            alert('terkirim');
+                        } else {
+                            alert('ada yang salah');
+                        }
+                    }
+                })
+
+            } else {
+                let form_data = new FormData();
+                form_data.append('nama_give', nama);
+                form_data.append('jeniskelamin_give', jeniskelamin);
+                form_data.append('usia_give', usia);
+                form_data.append('pendidikan_give', pendidikan);
+                form_data.append('jenislayanan_give', jenis_layanan);
+                form_data.append('jawaban1_give', jawaban_1);
+                form_data.append('jawaban2_give', jawaban_2);
+                form_data.append('jawaban3_give', jawaban_3);
+                form_data.append('jawaban4_give', jawaban_4);
+                form_data.append('jawaban5_give', jawaban_5);
+                form_data.append('jawaban6_give', jawaban_6);
+                form_data.append('jawaban7_give', jawaban_7);
+                form_data.append('jawaban8_give', jawaban_8);
+                form_data.append('jawaban9_give', jawaban_9);
+                form_data.append('pekerjaan_give', pekerjaan);
+                $.ajax({
+                    type: 'POST',
+                    url: '/⬧︎♋︎❖︎♏︎♎︎♋︎⧫︎♋︎',
+                    data: form_data,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        let msg = response['msg']
+                        if (msg === 'success') {
+                            setTimeout(function () {
+                                window.location = response['url'];
+                            }, 4000);
+                            alert('terkirim');
+                            alert(response['url'])
+                        } else {
+                            alert('ada yang salah');
+                        }
+                    }
+                })
+            }
+
+        }
+    </script>
+    <title>Form Kepuasan Masyarakat Kabil Kecamatan Nongsa</title>
+</head>
+
+<body>
+    <div class="judul">
+        <h1>KUESIONER SURVEY KEPUASAN MAYSYARAKAT(SKM)</h1>
+        <h1>PADA UNIT LAYANAN KECAMATAN NONGSA BATAM</h1>
+        <hr size="5" color="black" width="100%">
+        <br>
+        <h3>PROFIL</h3>
+    </div>
+    <div action="" id="formkepuasan">
+        <div class="profile">
+            <table class="profile-table">
+                <tr>
+                    <td>
+                        <span>Nama </span>
+                    </td>
+                    <td>
+                        <input type="text" name="nama" id="nama"
+                            placeholder=".......................................................................">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="jeniskelamin">
+                            <span>jenis kelamin:</span>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="radio" name="jeniskelamin" id="jeniskelaminL" value="laki-laki">L <input
+                            type="radio" name="jeniskelamin" id="jeniskelaminP" value="perempuan">P
+                    </td>
+                    <td class="usia">
+                        <div class="in-usia"><span>usia:</span><input type="number" id="umur" name="usia" class="inage"
+                                placeholder="........"><span>Tahun</span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="pendidikan">
+                            <span>Pendidikan :</span>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="radio" name="pendidikan" id="sd" value="sd"><span>sd</span>
+                        <input type="radio" name="pendidikan" id="smp" value="smp"><span>smp</span>
+                        <input type="radio" name="pendidikan" id="sma" value="sma"><span>sma</span>
+                        <input type="radio" name="pendidikan" id="s1" value="s1"><span>s1</span>
+                        <input type="radio" name="pendidikan" id="s2" value="s2"><span>s2</span>
+                        <input type="radio" name="pendidikan" id="s3" value="s3"><span>s3</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="column-pekerjaan">
+                        <div class="pekerjaan">
+                            <span>Pekerjaan :</span>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="radio" name="pekerjaan" id="pns" value="pns"><span>PNS</span>
+                        <input type="radio" name="pekerjaan" id="tni" value="tni"><span>TNI</span>
+                        <input type="radio" name="pekerjaan" id="polri" value="polri"><span>POLRI</span>
+                        <input type="radio" name="pekerjaan" id="swasta" value="swasta"><span>Swasta</span>
+                        <input type="radio" name="pekerjaan" id="wiraswasta"
+                            value="wiraswasta"><span>Wiraswasta</span><br>
+                        <input type="radio" name="pekerjaan" id="wiraswasta" value="Lainnya"><span>Lainnya</span><input
+                            type="text" name="pekerjaanlain" id="pekerjaanlain"
+                            placeholder="....................................................................."></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="jenislayanan">
+                            <span>Jenis Layanan Yang di terima</span>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="text" name="jenislayanan" id="jenislayanan"
+                            placeholder="..............................................................."><span>(Misal:KTP,KK,Sertfikat,dll)</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="pendapat">
+            <div class="judul2">
+                <h2>PENDAPAT RESPONDED TENTANG PELAYANAN</h2>
+                <span>(pilih sesuai opsi jawaban Masyarakat)</span>
+            </div>
+            <div class="row g-2" id="form-pendapat">
+                <div class="col-6">
+                    <table class="form-pendapat" >
+                        <tr>
+                            <td>
+                                <span>1.bagaimana pendapat Anda Tentang Kesesuaian Persyaratan dengan Jenis
+                                    Pelayanan</span>
+                            </td>
+                            <td>
+                                <span>P(*)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-persyaratan" id="Persyaratan-a" value="1"><label
+                                    for="#Persyaratan-a">Tidak Sesuai</label>
+                            </td>
+                            <td>
+                                <span>1</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-persyaratan" id="Persyaratan-b" value="2"><label
+                                    for="#Persyaratan-b">Kurang Sesuai</label><br>
+                            </td>
+                            <td>
+                                <span>2</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-persyaratan" id="Persyaratan-c" value="3"><label
+                                    for="#Persyaratan-c">Sesuai </label><br>
+                            </td>
+                            <td>
+                                <span>3</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-persyaratan" id="Persyaratan-d" value="4"><label
+                                    for="#Persyaratan-d">Sangat Sesuai</label><br>
+                            </td>
+                            <td>
+                                <span>4</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>2.bagaimana pendapat Anda Tentang Kemudahan Prosedur dengan Pelayan di Unit
+                                    ini</span><br>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kemudahan" id="kemudahan-a" value="1"><label
+                                    for="#kemudahan-a">Tidak Mudah</label><br>
+                            </td>
+                            <td>
+                                <span>1</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kemudahan" id="kemudahan-b" value="2"><label
+                                    for="#kemudahan-b">Kurang Mudah</label>
+                            </td>
+                            <td>
+                                <span>2</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kemudahan" id="kemudahan-c" value="3"><label
+                                    for="#kemudahan-c">Mudah</label>
+                            </td>
+                            <td>
+                                <span>3</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kemudahan" id="kemudahan-d" value="4"><label
+                                    for="#kemudahan-d">sangat Mudah</label>
+                            </td>
+                            <td>
+                                <span>4</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>3.bagaimana pendapat Anda Tentang Kecepatan Waktu dalam Memberikan pelayanan
+                                </span>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kecepatan" id="kecepatan-a" value="1"><label
+                                    for="#kecepatan-a">Tidak Cepat</label><br>
+                            </td>
+                            <td>
+                                <span>1</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kecepatan" id="kecepatan-b" value="2"><label
+                                    for="#kecepatan-b">Kurang Cepat</label><br>
+                            </td>
+                            <td>
+                                <span>2</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kecepatan" id="kecepatan-c" value="3"><label
+                                    for="#kecepatan-c">Cepat</label>
+                            </td>
+                            <td>
+                                <span>3</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kecepatan" id="kecepatan-d" value="4"><label
+                                    for="#kecepatan-d">sangat Cepat</label>
+                            </td>
+                            <td>
+                                <span>4</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>4.bagaimana pendapat Anda Tentang Kewajaran Biaya/Tarif Dalam Pelayanan </span>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-biaya" id="biaya-a" value="1"><label
+                                    for="#biaya-a">Sangat Mahal</label>
+                            </td>
+                            <td>
+                                <span>1</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-biaya" id="biaya-b" value="2"><label
+                                    for="#biaya-b">Cukup Mahal</label>
+                            </td>
+                            <td>
+                                <span>2</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-biaya" id="biaya-c" value="3"><label
+                                    for="#biaya-c">Murah</label><br>
+                            </td>
+                            <td>
+                                <span>3</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-biaya" id="biaya-d" value="4"><label
+                                    for="#biaya-d">Gratis</label>
+                            </td>
+                            <td>
+                                <span>4</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>5.bagaimana pendapat Anda Tentang kesesuaian Produk Pelayanan Antara yang
+                                    Tercantum Dalam Standar pelayanan dengan Hasil yang di berikan</span>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-produk" id="produk-a" value="1"><label
+                                    for="#produk-a">tidak sesuai</label><br>
+                            </td>
+                            <td>
+                                <span>1</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-produk" id="produk-b" value="2"><label
+                                    for="#produk-b">Kurang sesuai</label>
+                            </td>
+                            <td>
+                                <span>2</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-produk" id="produk-c" value="3"><label
+                                    for="#produk-c">Sesuai</label>
+                            </td>
+                            <td>
+                                <span>3</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-produk" id="produk-d" value="4"><label
+                                    for="#produk-d">Sangat Sesuai</label>
+                            </td>
+                            <td>
+                                <span>4</span>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="col-6">
+                    <table>
+                        <tr>
+                            <td>
+                                <span>6.bagaimana pendapat Anda Tentang Kompetensi/kemampuan Petugas dalam
+                                    Pelayanan</span>
+                            </td>
+                            <td>
+                                <span>P(*)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kompetensi" id="kompetensi-a" value="1"><label
+                                    for="#kompetensi-a">tidak kompeten</label>
+                            </td>
+                            <td>
+                                <span>1</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kompetensi" id="kompetensi-b" value="2"><label
+                                    for="#kompetensi-b">Kurang kompeten</label>
+                            </td>
+                            <td>
+                                <span>2</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kompetensi" id="kompetensi-c" value="3"><label
+                                    for="#kompetensi-c">kompeten</label>
+                            </td>
+                            <td>
+                                <span>3</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kompetensi" id="kompetensi-d" value="4"><label
+                                    for="#kompetensi-d">Sangat kompeten</label>
+                            </td>
+                            <td>
+                                <span>4</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>7.bagaimana pendapat Anda Tentang Perilaku Petugas Dalam pelayanan terkait
+                                    kesopanan dan keramahan</span>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-keramahan" id="keramahan-a" value="1"><label
+                                    for="#keramahan-a">tidak sopan dan ramah</label>
+                            </td>
+                            <td>
+                                <span>1</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-keramahan" id="keramahan-b" value="2"><label
+                                    for="#keramahan-b">Kurang sopan dan ramah</label>
+                            </td>
+                            <td>
+                                <span>2</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-keramahan" id="keramahan-c" value="3"><label
+                                    for="#keramahan-c">Sopan dan Ramah</label>
+                            </td>
+                            <td>
+                                <span>3</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-keramahan" id="keramahan-d" value="4"><label
+                                    for="#keramahan-d">Sangat Sopan dan Ramah</label>
+                            </td>
+                            <td>
+                                <span>4</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>8.bagaimana pendapat Anda Tentang kualitas Sarana dan prasarana</span>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kualitassarana" id="kualitassarana-a" value="1"><label
+                                    for="#kualitassarana-a">Buruk</label><br>
+                            </td>
+                            <td>
+                                <span>1</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kualitassarana" id="kualitassarana-b" value="2"><label
+                                    for="#kualitassarana-b">cukup</label>
+                            </td>
+                            <td>
+                                <span>2</span>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kualitassarana" id="kualitassarana-c" value="3"><label
+                                    for="#kualitassarana-c">Baik</label>
+                            </td>
+                            <td>
+                                <span>3</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-kualitassarana" id="kualitassarana-d" value="4"><label
+                                    for="#kualitassarana-d">Sangat Baik</label>
+                            </td>
+                            <td>
+                                <span>4</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>9.bagaimana pendapat Anda Tentang Penanganan Pengaduan Penggunaan Pelayanan</span>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-pengaduan" id="pengaduan-a" value="1"><label
+                                    for="#pengaduan-a">Tidak di kelola dengan Baik</label>
+                            </td>
+                            <td>
+                                <span>1</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-pengaduan" id="pengaduan-b" value="2"><label
+                                    for="#pengaduan-b">Ada Tetapi Tidak Berfungsi</label>
+                            </td>
+                            <td>
+                                <span>2</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-pengaduan" id="pengaduan-c" value="3"><label
+                                    for="#pengaduan-c" class="kecilindikit">Berfungsi Tetapi Kurang Maksimal</label>
+                            </td>
+                            <td>
+                                <span>3</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="nilai-pengaduan" id="pengaduan-d" value="4"><label
+                                    for="#pengaduan-d">di kelola dengan Baik</label>
+                            </td>
+                            <td>
+                                <span>4</span>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <button class="btn btn-outline-success" onclick="submit()"><i
+                        class="fa-solid fa-share-from-square"></i>KIRIM</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
